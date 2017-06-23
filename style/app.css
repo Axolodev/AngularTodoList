@@ -57,7 +57,7 @@ body{
     text-decoration: line-through;
 }
 
-textarea#task_description {
+textarea.task_description {
     resize: none;
     max-width: 100%;
 }

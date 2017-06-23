@@ -31,7 +31,7 @@
 
                 /**
                 * Inserts a task into the task list.
-                * @param {Object} task the task to be inserted into the list.
+                * @param {Object} task The task to be inserted into the list.
                 */
                 this.insertTask = function(task) {
                     task.id = next_id++;
@@ -71,10 +71,11 @@
             templateUrl: 'src/task.html',
             controller: function() {
                 this.editMode = false;
+                this.clonedTask = {};
 
                 /**
                 * Changes the state from a task. (done-> undone, undone-> done)
-                * @param {Object} task the task which changed its state
+                * @param {Object} task The task which changed its state
                 */
                 this.changeTaskState = function(task) {
                     task.done = !task.done;
@@ -83,15 +84,16 @@
                 /**
                 * Sets the edit mode for the current controller. This allows
                 * edition of a task.
-                * @param {Object} task task to be edited.
+                * @param {Object} task Task to be edited.
                 */
                 this.changeEditMode = function(task) {
                     this.editMode = !this.editMode;
+                    this.clonedTask = angular.copy(task);
                 }
 
                 /**
                 * Deletes a task from the task list.
-                * @param {Object} task task to be deleted.
+                * @param {Object} task Task to be deleted.
                 */
                 this.deleteTask = function(task){
 
