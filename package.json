@@ -1,0 +1,23 @@
+{
+  "name": "angulartodolist",
+  "version": "1.0.0",
+  "description": "Small app made to learn Angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mortaldraw/AngularTodoList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mortaldraw/AngularTodoList/issues"
+  },
+  "homepage": "https://github.com/mortaldraw/AngularTodoList#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7"
+  }
+}

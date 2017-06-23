@@ -1,0 +1,59 @@
+body{
+    background-color: #e0f3f8;
+}
+
+#main-app-body {
+    background: #fee090;
+}
+
+.gi-2x{
+    font-size: 2em;
+}
+
+.gi-3x{
+    font-size: 3em;
+}
+
+.gi-4x{
+    font-size: 4em;
+}
+
+.gi-5x{
+    font-size: 5em;
+}
+
+.task-control {
+    position: absolute;
+    color: #fafafa;
+    top: -20px;
+    border: 1px solid #333;
+    border-top: 0;
+    border-bottom-right-radius: 0.4em;
+    border-bottom-left-radius: 0.4em;
+    padding: 1em 0.5em;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0.1em .5em rgba(20, 20, 20, 0.8);
+    -moz-box-shadow: 0px 0.1em .5em rgba(20, 20, 20, 0.8);
+    box-shadow: 0px 0.1em .5em rgba(20, 20, 20, 0.8);
+}
+
+.task-control:hover {
+    padding-top: 1.15em;
+}
+
+.task-control:active{
+    padding-top: 1.4em;
+}
+
+.task-control.edit-button{
+    background-color: #313695;
+    left: 0;
+}
+
+.task-control.delete-button {
+    background-color: #d73027;
+}
+
+.text-strike{
+    text-decoration: line-through;
+}

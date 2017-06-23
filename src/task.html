@@ -1,0 +1,13 @@
+<div class="col-xs-12"><hr></div>
+<div class="col-xs-10 text-justify">
+    <input type="checkbox" ng-checked={{task.done}} ng-click="singleTaskCtrl.changeTaskState(task)">
+    <span ng-class='{"text-strike": task.done}' class="task_name">
+        <b>{{task.name}}: </b>{{task.description}}
+    </span>
+    {{singleTaskCtrl.editMode}}
+</div>
+<div class="col-xs-2 text-center">
+    <i class="edit-button glyphicon task-control glyphicon-pencil" ng-click="singleTaskCtrl.changeEditMode()"></i>
+    <i class="delete-button glyphicon task-control glyphicon-remove"></i>
+</div>
+<br>
