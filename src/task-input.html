@@ -1,14 +1,28 @@
-<form>
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-            <div class="form-group">
-              <label for="task_name" class="control-label">Task name:</label>
-              <input type="text" class="form-control" id="task_name" placeholder="" required>
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+        <div class="task-insertion-control" ng-show="taskInputCtrl.insertTaskMode">
+            <form name="insertTaskForm" ng-submit="insertTaskForm.$valid && appCtrl.insertTask(taskInputCtrl.task) && taskInputCtrl.resetTask()">
+                <div class="form-group">
+                    <label for="task_name" class="control-label">Task name:</label>
+                    <input type="text" class="form-control" ng-model="taskInputCtrl.task.name" id="task_name" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="task_description">Task description:</label>
+                    <textarea name="task_description" class="form-control" ng-model="taskInputCtrl.task.description" id="task_description"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="reset" class="btn btn-danger" ng-click="taskInputCtrl.changeInsertTaskMode()">Cancel</button>
+                        <button type="submit" class="btn btn-success pull-right" ng-click="insertTaskForm.$valid && taskInputCtrl.changeInsertTaskMode()">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="task-insertion-control" ng-hide="taskInputCtrl.insertTaskMode" ng-click="taskInputCtrl.changeInsertTaskMode()">
+            <div class="text-center">
+                <h4>Press the button to add a task!</h4>
             </div>
-            <div class="form-group">
-              <label for="task_description">Task description:</label>
-              <textarea name="task_description" class="form-control" id="task_description"></textarea>
-            </div>
+            <div class="btn btn-block btn-success">+</div>
         </div>
     </div>
-</form>
+</div>
