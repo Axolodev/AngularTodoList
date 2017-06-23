@@ -1,6 +1,6 @@
 "use strict";
 (function() {
-    var app = angular.module('todoApp', []);
+    var app = angular.module('todoApp', ["ngAnimate"]);
     var next_id = 3;
 
     // Simulating a database.

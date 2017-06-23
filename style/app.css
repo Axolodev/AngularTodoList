@@ -22,14 +22,19 @@ body{
     font-size: 5em;
 }
 
-.task-control {
+.task-edit-buttons {
     position: absolute;
-    color: #fafafa;
     top: -20px;
+}
+
+.task-control {
+    color: #fafafa;
     border-top: 0;
     border-bottom-right-radius: 0.4em;
     border-bottom-left-radius: 0.4em;
     padding: 1em 0.5em;
+    position: relative;
+    height:100%;
     cursor: pointer;
     -webkit-box-shadow: 0px 0.1em .5em rgba(20, 20, 20, 0.4), 0px 0.2em .5em rgba(20, 20, 20, 0.4);
     -moz-box-shadow: 0px 0.1em .5em rgba(20, 20, 20, 0.4), 0px 0.2em .5em rgba(20, 20, 20, 0.4);
@@ -60,4 +65,56 @@ body{
 textarea.task_description {
     resize: none;
     max-width: 100%;
+}
+
+
+.task-edit-buttons.ng-hide-add-active > .task-control {
+    -webkit-animation: leave 300ms linear;
+    animation: leave 300ms linear;
+    pointer-events: none;
+}
+
+@-webkit-keyframes leave {
+    from {
+        opacity: 1;
+        height: 42px;
+    } to {
+        opacity: 0;
+        height: 0px;
+    }
+}
+@keyframes leave {
+    from {
+        opacity: 1;
+        height: 42px;
+    } to {
+        opacity: 0;
+        height: 0px;
+    }
+}
+
+
+.task-edit-buttons.ng-hide-remove-active > .task-control {
+    -webkit-animation: leave 300ms linear;
+    animation: leave 300ms linear;
+    pointer-events: none;
+}
+
+@-webkit-keyframes leave {
+    from {
+        opacity: 1;
+        height: 42px;
+    } to {
+        opacity: 0;
+        height: 0px;
+    }
+}
+@keyframes leave {
+    from {
+        opacity: 1;
+        height: 42px;
+    } to {
+        opacity: 0;
+        height: 0px;
+    }
 }
