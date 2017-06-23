@@ -1,7 +1,9 @@
 "use strict";
 (function() {
     var app = angular.module('todoApp', []);
+    var next_id = 3;
 
+    // Simulating a database.
     var taskList = [{
         "id": 1,
         "name": "Build",
@@ -10,67 +12,46 @@
     }, {
         "id": 2,
         "name": "Get groceries",
-        "description": "Go to Walmart and get some groceries.",
+        "description": "Go to Wall-E Mart and get some groceries.",
         "done": true
     }];
 
 
+    // Directives start here.
+
+    // app directive. Root directive for the whole app.
     app.directive('app', function() {
         return {
             restrict: 'E',
             templateUrl: 'src/app.html',
-            controller: ["$scope", function($scope) {
+            controller: function() {
                 var self = this;
 
                 this.tasks = taskList;
 
-                this.insertTask = function(task){
-                    var max_id = -1;
-
-                    this.tasks.map(function(value){
-                        if(value.id > max_id) {
-                            max_id = value.id;
-                        }
-                    });
-
-                    task.id = max_id + 1;
+                /**
+                * Inserts a task into the task list.
+                * @param {Object} task the task to be inserted into the list.
+                */
+                this.insertTask = function(task) {
+                    task.id = next_id++;
                     task.done = false;
                     this.tasks.push(angular.copy(task));
                     task.name = "";
                     task.description = "";
                 };
-            }],
+            },
             controllerAs: 'appCtrl'
         };
     });
 
-    app.directive('task', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'src/task.html',
-            controller: function() {
-                this.editMode = false;
-
-                this.changeTaskState = function(task) {
-                    task.done = !task.done;
-                };
-
-                this.changeEditMode = function() {
-                    this.editMode = !this.editMode;
-                }
-
-                this.deleteTask
-            },
-            controllerAs: 'singleTaskCtrl'
-        };
-    });
-
+    // task-input directive. This allows the creation of tasks.
     app.directive('taskInput', function() {
         return {
             restrict: 'E',
             templateUrl: 'src/task-input.html',
             controllerAs: 'taskInputCtrl',
-            controller: ["$scope", function($scope) {
+            controller: function() {
                 var self = this;
                 this.inputMode = false;
                 this.task = {};
@@ -79,9 +60,48 @@
                 this.changeInsertTaskMode = function() {
                     this.insertTaskMode = !this.insertTaskMode;
                 };
-            }],
+            },
         };
     });
 
+    // task directive, for individual tasks.
+    app.directive('task', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'src/task.html',
+            controller: function() {
+                this.editMode = false;
+
+                /**
+                * Changes the state from a task. (done-> undone, undone-> done)
+                * @param {Object} task the task which changed its state
+                */
+                this.changeTaskState = function(task) {
+                    task.done = !task.done;
+                };
+
+                /**
+                * Sets the edit mode for the current controller. This allows
+                * edition of a task.
+                * @param {Object} task task to be edited.
+                */
+                this.changeEditMode = function(task) {
+                    this.editMode = !this.editMode;
+                }
+
+                /**
+                * Deletes a task from the task list.
+                * @param {Object} task task to be deleted.
+                */
+                this.deleteTask = function(task){
+
+                }
+            },
+            controllerAs: 'singleTaskCtrl'
+        };
+    });
+
+
+    // / Directives end here
 
 })();
